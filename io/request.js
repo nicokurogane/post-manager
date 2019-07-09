@@ -24,4 +24,8 @@ export default class Request{
     getPosts(lowerLimit, higestLimit){
         return this.performRequest(`${this.BASE_URL}posts?_start=${lowerLimit}&_end=${higestLimit}`);
     }
+
+    getTags(){
+        return this.performRequest(`${this.BASE_URL}tags`);
+    }
 } 

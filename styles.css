@@ -2,6 +2,27 @@
     box-sizing: border-box !important;
 }
 
+
+.tag{
+    cursor: pointer;
+    color: #ffffff;
+    margin-right: 1vw;
+    border-radius: 15px 50px;
+    padding:2px 10px;
+    background-color:#a11a32; 
+    transition: all 0.2s ease;
+}
+
+.tag.selected{
+    color: #a11a32;
+    margin-right: 1vw;
+    border-radius: 15px 50px;
+    padding:2px 10px;
+    background-color:#ffffff; 
+}
+
+
+
 .post-container{
     margin-top: 10vh;
 }
