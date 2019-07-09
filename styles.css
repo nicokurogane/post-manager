@@ -3,5 +3,13 @@
 }
 
 .post-container{
-    margin-top: 100vh;
+    margin-top: 10vh;
+}
+
+/*
+    this makes all images in cards to have the same height
+*/
+.card-img-top {
+    height: 35vh;
+    object-fit: cover;
 }

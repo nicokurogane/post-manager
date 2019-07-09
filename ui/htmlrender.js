@@ -7,7 +7,7 @@ export default class HtmlRender {
   renderFeaturePosts(posts) {
     posts.forEach(post => {
       let newCard = `<div class="card">
-            <img class="card-img-top  h-100" src="${post.image}" alt="Card image cap">
+            <img class="card-img-top" src="${post.image}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">${post.title}</h5>
               <p class="card-text">${post.subTitle}</p>
@@ -23,18 +23,17 @@ export default class HtmlRender {
 
   renderOtherPost(posts) {
     posts.forEach(post => {
-        let newCard = `<div class="card">
+      let newCard = `<div class="card">
         <div class="card-body">
             <h5 class="card-title">${post.title}</h5>
             <p class="card-text">${post.subTitle}</p>
             <a href="#">Go somewhere</a>
         </div>
         </div>`;
-    const newDiv = document.createElement("div");
-    newDiv.classList.add("col-sm-12");
-    newDiv.innerHTML = newCard;
-    this.postContainer.appendChild(newDiv);
-      });
-    
+      const newDiv = document.createElement("div");
+      newDiv.classList.add("col-sm-12");
+      newDiv.innerHTML = newCard;
+      this.postContainer.appendChild(newDiv);
+    });
   }
 }
