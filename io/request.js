@@ -39,5 +39,9 @@ export default class Request {
 
         return this.performRequest(`${this.BASE_URL}posts`,options);
     }
+    
+    deletePostById(postIdToDelete){
+        return this.performRequest(`${this.BASE_URL}posts/${postIdToDelete}`);
+    }
 
 }
