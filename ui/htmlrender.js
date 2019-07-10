@@ -2,12 +2,11 @@ export default class HtmlRender {
   constructor() {
     this.featurePostContainer = document.getElementById("feature-post-container");
     this.postContainer = document.getElementById("post-container");
-    this.tagsContainer = document.getElementById("tags-container");   
+    this.tagsContainer = document.getElementById("tags-container");
     this.filterTagList = [];
   }
 
-
-  renderFeaturePosts(posts) {
+  renderFeaturePosts(posts, deleteFunction) {
     posts.forEach(post => {
       let newCard = `
         <div class="card">
@@ -15,13 +14,27 @@ export default class HtmlRender {
           <div class="card-body">
             <h5 class="card-title">${post.title}</h5>
             <p class="card-text">${post.subTitle}</p>
-            <a href="#">Go somewhere</a>
             <a class="btn btn-success" href="./post.html?id=${post.id}">Edit Post</a>
           </div>
         </div>`;
+
       const newDiv = document.createElement("div");
       newDiv.classList.add("col-sm-4");
-      newDiv.innerHTML = newCard;
+      newCard = new DOMParser().parseFromString(newCard, "text/html");
+
+      const deleteIcon = document.createElement("a"); 
+      deleteIcon.dataset.id = post.id;
+      deleteIcon.classList.add("btn", "btn-danger");
+      deleteIcon.innerText = "delete post";
+      deleteIcon.addEventListener("click", e=>{
+        console.log(e.target.dataset.id);
+        deleteFunction(e.target.dataset.id);
+      });
+
+      newCard.querySelector(".card-body").appendChild(deleteIcon);
+
+      newDiv.appendChild(newCard.documentElement);
+
       this.featurePostContainer.appendChild(newDiv);
     });
   }
@@ -33,7 +46,9 @@ export default class HtmlRender {
           <div class="card-body">
             <h5 class="card-title">${post.title}</h5>
             <p class="card-text">${post.subTitle}</p>
-            <a class="btn btn-success" href="./post.html?id=${post.id}">Edit Post</a>
+            <a class="btn btn-success" href="./post.html?id=${
+              post.id
+            }">Edit Post</a>
           </div>
         </div>`;
       const newDiv = document.createElement("div");
@@ -49,7 +64,6 @@ export default class HtmlRender {
     }
   }
 
-
   renderTagsList(tags) {
     tags.forEach(tag => {
       const newTag = document.createElement("span");
@@ -60,8 +74,9 @@ export default class HtmlRender {
       newTag.addEventListener("click", e => {
         if (e.target.classList.contains("selected")) {
           e.target.classList.remove("selected");
-          let indexOfElement =  this.filterTagList.indexOf(e.target.dataset.id);
-          if(indexOfElement!== -1) this.filterTagList.splice(indexOfElement, 1);
+          let indexOfElement = this.filterTagList.indexOf(e.target.dataset.id);
+          if (indexOfElement !== -1)
+            this.filterTagList.splice(indexOfElement, 1);
         } else {
           e.target.classList.add("selected");
           this.filterTagList.push(e.target.dataset.id);
@@ -75,8 +90,7 @@ export default class HtmlRender {
   /*
     Debido a que se extraen como Strings del html, se pasa map para transformar los id de nuevo a numeros
   */
-  getFiltersTags(){
+  getFiltersTags() {
     return this.filterTagList.map(tag => Number(tag));
   }
-
 }

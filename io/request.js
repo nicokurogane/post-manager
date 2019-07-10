@@ -51,12 +51,17 @@ export default class Request {
                 'Content-Type': 'application/json'
             }
         };
-
         return this.performRequest(`${this.BASE_URL}posts/${editPostData.id}`,options);
     }
     
     deletePostById(postIdToDelete){
-        return this.performRequest(`${this.BASE_URL}posts/${postIdToDelete}`);
+        let options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        return this.performRequest(`${this.BASE_URL}posts/${postIdToDelete}`,options);
     }
 
 }
