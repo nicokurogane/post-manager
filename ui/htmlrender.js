@@ -27,19 +27,16 @@ export default class HtmlRender {
       deleteIcon.classList.add("btn", "btn-danger");
       deleteIcon.innerText = "delete post";
       deleteIcon.addEventListener("click", e=>{
-        console.log(e.target.dataset.id);
         deleteFunction(e.target.dataset.id);
       });
 
       newCard.querySelector(".card-body").appendChild(deleteIcon);
-
       newDiv.appendChild(newCard.documentElement);
-
       this.featurePostContainer.appendChild(newDiv);
     });
   }
 
-  renderOtherPost(posts) {
+  renderOtherPost(posts, deleteFunction) {
     posts.forEach(post => {
       let newCard = `
         <div class="card">
@@ -53,7 +50,20 @@ export default class HtmlRender {
         </div>`;
       const newDiv = document.createElement("div");
       newDiv.classList.add("col-sm-12");
-      newDiv.innerHTML = newCard;
+     
+      newCard = new DOMParser().parseFromString(newCard, "text/html");
+   
+
+      const deleteIcon = document.createElement("a"); 
+      deleteIcon.dataset.id = post.id;
+      deleteIcon.classList.add("btn", "btn-danger");
+      deleteIcon.innerText = "delete post";
+      deleteIcon.addEventListener("click", e=>{
+        deleteFunction(e.target.dataset.id);
+      });
+      
+      newCard.querySelector(".card-body").appendChild(deleteIcon);
+      newDiv.appendChild(newCard.documentElement);
       this.postContainer.appendChild(newDiv);
     });
   }

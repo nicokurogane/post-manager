@@ -13,7 +13,8 @@ function deletePost(id){
     requestHandler.deletePostById(id)
     .then(result =>{
          window.location.reload();
-    }).catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
 }
 
 
