@@ -27,17 +27,32 @@ export default class Request {
         return this.performRequest(`${this.BASE_URL}tags`);
     }
 
+    getPostById(id){
+        return this.performRequest(`${this.BASE_URL}posts/${id}`);
+    }
 
     createPost(newPostData) {
         let options = {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify(newPostData), // data can be `string` or {object}!
+            body: JSON.stringify(newPostData), 
             headers: {
                 'Content-Type': 'application/json'
             }
         };
 
         return this.performRequest(`${this.BASE_URL}posts`,options);
+    }
+
+    editPost(editPostData) {
+        let options = {
+            method: 'PUT',
+            body: JSON.stringify(editPostData), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        return this.performRequest(`${this.BASE_URL}posts/${editPostData.id}`,options);
     }
     
     deletePostById(postIdToDelete){

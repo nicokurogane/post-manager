@@ -16,7 +16,7 @@ export default class Post {
       const year = this.createDate.getFullYear().toString();
       const month = (this.createDate.getMonth()+1);
       const day = this.createDate.getDate();
-      this.createDate = `${year}/${ this.addLeadingZeros(month)}/${ this.addLeadingZeros(day)}`;
+      this.createDate = `${year}/${ this.addLeadingZeros(month)}/${this.addLeadingZeros(day)}`;
   }
 
   addLeadingZeros(numberToFormat){

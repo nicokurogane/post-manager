@@ -16,6 +16,7 @@ export default class HtmlRender {
             <h5 class="card-title">${post.title}</h5>
             <p class="card-text">${post.subTitle}</p>
             <a href="#">Go somewhere</a>
+            <a class="btn btn-success" href="./post.html?id=${post.id}">Edit Post</a>
           </div>
         </div>`;
       const newDiv = document.createElement("div");
@@ -32,7 +33,7 @@ export default class HtmlRender {
           <div class="card-body">
             <h5 class="card-title">${post.title}</h5>
             <p class="card-text">${post.subTitle}</p>
-            <a href="#">Go somewhere</a>
+            <a class="btn btn-success" href="./post.html?id=${post.id}">Edit Post</a>
           </div>
         </div>`;
       const newDiv = document.createElement("div");

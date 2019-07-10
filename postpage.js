@@ -6,15 +6,35 @@ import Request from "./io/request.js";
 const requestHandler = new Request();
 const formHandler = new FormUI();
 
+//de esta manera podemos buscar si se le ha pasado algun parametro a la pagina
+
+let params = new URLSearchParams(location.search);
+let idToEdit = params.get("id");
+
+if(!idToEdit) {
+    document.getElementById("btnEdit").style.display = "none";
+} else{
+    document.getElementById("btnCreate").style.display = "none";
+
+    //extraemos el POST a modificar
+    requestHandler.getPostById(idToEdit).then(post =>{ 
+        formHandler.setPostDataToEdit(post);    
+    });
+}
+
+
 //create functionality
 document.getElementById("post-form").addEventListener("submit", e=>{
     e.preventDefault();
-    let postFormInput  = formHandler.getPostFromInput();
-    console.log(postFormInput);
-    requestHandler.createPost(postFormInput);
-    
-});
 
+    if(!idToEdit){
+        let postFormInput  = formHandler.getPostFromInput();
+        requestHandler.createPost(postFormInput);
+    }else{
+        let postFormInput  = formHandler.getPostFromInputEdit();
+        requestHandler.editPost(postFormInput);
+    }
+});
 
 
 
