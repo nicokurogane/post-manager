@@ -64,4 +64,9 @@ export default class Request {
         return this.performRequest(`${this.BASE_URL}posts/${postIdToDelete}`,options);
     }
 
+
+    getAuthorById(authorId){
+        return this.performRequest(`${this.BASE_URL}authors/${authorId}`);
+    }
+
 }

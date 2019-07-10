@@ -14,7 +14,8 @@ export default class HtmlRender {
           <div class="card-body">
             <h5 class="card-title">${post.title}</h5>
             <p class="card-text">${post.subTitle}</p>
-            <a class="btn btn-success" href="./post.html?id=${post.id}">Edit Post</a>
+            <a class="btn btn-primary" href="./view_post.html?id=${post.id}">Check Post</a>
+            <a class="btn btn-success" href="./post.html?id=${post.id}">Edit Post</a>            
           </div>
         </div>`;
 
@@ -43,16 +44,15 @@ export default class HtmlRender {
           <div class="card-body">
             <h5 class="card-title">${post.title}</h5>
             <p class="card-text">${post.subTitle}</p>
-            <a class="btn btn-success" href="./post.html?id=${
-              post.id
-            }">Edit Post</a>
+            <a class="btn btn-primary" href="./view_post.html?id=${post.id}">Check Post</a>
+            <a class="btn btn-success" href="./post.html?id=${post.id}">Edit Post</a>
+            
           </div>
         </div>`;
       const newDiv = document.createElement("div");
       newDiv.classList.add("col-sm-12");
      
-      newCard = new DOMParser().parseFromString(newCard, "text/html");
-   
+      newCard = new DOMParser().parseFromString(newCard, "text/html");   
 
       const deleteIcon = document.createElement("a"); 
       deleteIcon.dataset.id = post.id;

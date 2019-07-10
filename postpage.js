@@ -15,15 +15,12 @@ if(!idToEdit) {
     document.getElementById("btnEdit").style.display = "none";
 } else{
     document.getElementById("btnCreate").style.display = "none";
-
     //extraemos el POST a modificar
     requestHandler.getPostById(idToEdit).then(post =>{ 
         formHandler.setPostDataToEdit(post);    
     });
 }
 
-
-//create functionality
 document.getElementById("post-form").addEventListener("submit", e=>{
     e.preventDefault();
 
