@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/viewpost.css">
     <title>Post Manager</title>
 </head>
 
@@ -26,10 +27,9 @@
         </div>
     </div>
 
-    <div class="container m-6">
-        <h1>Review Post</h1>
-    </div>
+
     <div class="container p-5">
+
         <div class="row">
             <div class="col">
                 <label>Post title</label>
@@ -38,6 +38,11 @@
             <div class="col">
                 <label>Post subtitle</label>
                 <span id="subtitle"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img id="post-image" src="" class="post-image" alt="Responsive image">
             </div>
         </div>
         <div class="row">
@@ -54,18 +59,23 @@
 
         <div class="row">
             <div class="col">
-                    <label>body</label>
-                    <p id="body"></p>
+                <label>body</label>
+                <p id="body"></p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                    <label>Tags</label>
-                    <div id="tags"></div>
+                <label>Tags</label>
+                <div id="tags"></div>
             </div>
         </div>
 
     </div>
+
+    <div class="container">
+        <h3>Comments</h3>
+    </div>
+    <div id="comment-container" class="container"> </div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

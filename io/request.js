@@ -69,4 +69,17 @@ export default class Request {
         return this.performRequest(`${this.BASE_URL}authors/${authorId}`);
     }
 
+
+    getCommentsByPostId(postId){
+        return this.performRequest(`${this.BASE_URL}comments?postId=${postId}`);
+    }
+
+    getAuthorsByIds(authorsIds){
+        let urlString= "?";
+        authorsIds.forEach(element => {
+            urlString += `id=${element}&`
+        });
+        urlString = urlString.substring(0,urlString.length-1);
+        return this.performRequest(`${this.BASE_URL}authors/${urlString}`);
+    }
 }

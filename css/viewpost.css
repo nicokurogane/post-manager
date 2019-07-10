@@ -1,0 +1,8 @@
+*{
+    box-sizing: border-box;
+}
+
+.post-image{
+    width: 100%;
+    object-fit: cover;
+}
