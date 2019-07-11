@@ -5,7 +5,7 @@ import Request from "./io/request.js";
 const requestHandler = new Request();
 const formHandler = new FormUI();
 
-formHandler.initFields(requestHandler);
+
 
 //de esta manera podemos buscar si se le ha pasado algun parametro a la pagina
 
@@ -14,11 +14,12 @@ let idToEdit = params.get("id");
 
 if (!idToEdit) {
   document.getElementById("btnEdit").style.display = "none";
+  formHandler.initFields(requestHandler);
 } else {
   document.getElementById("btnCreate").style.display = "none";
   //extraemos el POST a modificar
   requestHandler.getPostById(idToEdit).then(post => {
-    formHandler.setPostDataToEdit(post);
+    formHandler.initFieldsWithPost(requestHandler, post);
   });
 }
 
@@ -35,3 +36,4 @@ document.getElementById("post-form").addEventListener("submit", e => {
     });
   }
 });
+
