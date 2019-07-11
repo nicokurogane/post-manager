@@ -34,3 +34,12 @@
     height: 35vh;
     object-fit: cover;
 }
+
+.confirmation-message{
+    margin-top: 4vh;
+    display: none;
+}
+
+.confirmation-message.show{
+    display: block;
+}
