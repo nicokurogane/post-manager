@@ -19,7 +19,6 @@ export default class Request {
           return this.performRequest(`${this.BASE_URL}posts?_sort=id&_order=desc`);
       }*/
 
-      //......... REFACTOR THIS.............
     getPosts(lowerLimit, higestLimit) {
         return this.performRequest(`${this.BASE_URL}posts?_start=${lowerLimit}&_end=${higestLimit}`);
     }

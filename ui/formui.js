@@ -1,5 +1,5 @@
 import Post from "../models/post.js";
-
+import Validator from "../utilities/validator.js";
 /*
 this class handles all the elements for the form which yuo can create o edit post
 */
@@ -15,6 +15,7 @@ export default class FormUI {
     this.tagsContainer = document.getElementById("tags-container");
     this.selectedTagsContainer = document.getElementById("selected-tags");
     this.filterTagList = [];
+    this.spanErrorMessages = ["title-invalid","subtitle-invalid","image-invalid","body-invalid","tag-invalid"];
   }
 
   initFields(requestHandler) {
@@ -85,7 +86,7 @@ export default class FormUI {
     });
     let selectedAuthorId = this.authorInput.value;
     let newPost = new Post(
-      this.idInput.value,
+      Number(this.idInput.value),
       this.titleInput.value,
       this.subtitleInput.value,
       this.imageInput.value,
@@ -130,5 +131,49 @@ export default class FormUI {
     } else {
       this.selectedTagsContainer.innerHTML = tagNames.toString();
     }
+  }
+
+
+  validateForm() {
+    this.hideInvalidMessages();
+    let numberOfInvalids = 0;     
+
+    if (Validator.isStringEmpty(this.titleInput .value)) {
+      this.showInvalidMessage(this.spanErrorMessages[0]);
+      numberOfInvalids++;
+    }
+  
+    if (Validator.isStringEmpty(this.subtitleInput.value)) {
+      this.showInvalidMessage(this.spanErrorMessages[1]);
+      numberOfInvalids++;
+    }
+    if (Validator.isStringEmpty(this.imageInput.value)) {
+      this.showInvalidMessage(this.spanErrorMessages[2]);
+      numberOfInvalids++;
+    }
+    if (Validator.isStringEmpty(this.bodyInput.value)) {
+      this.showInvalidMessage(this.spanErrorMessages[3]);
+      numberOfInvalids++;
+    }
+    if (Validator.isTagsArraysEmpty(this.filterTagList)) {
+      this.showInvalidMessage(this.spanErrorMessages[4]);
+      numberOfInvalids++;
+    }
+
+ 
+    return numberOfInvalids === 0;
+  }
+
+
+  showInvalidMessage(targetSpan) {
+    document.getElementById(targetSpan).classList.remove("hide-message");
+  }
+  
+  //refactor this method
+  hideInvalidMessages() {
+    this.spanErrorMessages.forEach(id =>{
+      document.getElementById(id).classList.add("hide-message");
+    });
+    
   }
 }

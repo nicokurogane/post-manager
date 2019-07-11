@@ -22,3 +22,13 @@
     border-color: #a11a32;
 }
 
+/*Validation messages styles*/
+.err-msg{
+    color: #BD2424;
+    font-size: 0.85em;
+    transition: all 0.2s ease-in-out;   
+}
+
+.hide-message{
+   opacity: 0;
+}

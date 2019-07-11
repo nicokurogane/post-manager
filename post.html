@@ -33,32 +33,35 @@
                 <div class="form-group col-md-6">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" id="title" placeholder="Post title">
+                    <span id="title-invalid" class="hide-message  err-msg">Post Title cant be empty</span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="subtitle">Subtitle</label>
                     <input type="text" class="form-control" id="subtitle" placeholder="Enter a subtitle">
+                    <span id="subtitle-invalid" class="hide-message  err-msg">Post subtitle can't be empty</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="image">Image URL</label>
                 <input type="text" class="form-control" id="image" placeholder="Write URL...">
+                <span id="image-invalid" class="hide-message  err-msg">image url can't be empty</span>
             </div>
             <div class="form-group">
-                <label for="author">Author</label>
-               
+                <label for="author">Author</label>               
                 <select id=author  class="form-control" >
-
                 </select>
             </div>
             <div class="form-group">
                 <label for="body">Body</label>
                 <textarea class="form-control" id="body" rows="3" placeholder="Write your post!"></textarea>
+                <span id="body-invalid" class="hide-message  err-msg">Must select one status</span>
             </div>
             <div class="form-row">
                 <div class="form-group col">
                     <label for="inputState">Tags</label>
                     <div id="selected-tags" class="m-3"></div>
                     <div id="tags-container"></div> 
+                    <span id="tag-invalid" class="hide-message  err-msg">Must select one at least one tag.</span>
                 </div>
 
             </div>

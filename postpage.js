@@ -26,12 +26,14 @@ if (!idToEdit) {
 document.getElementById("post-form").addEventListener("submit", e => {
   e.preventDefault();
   let postFormInput = formHandler.getPostFromInput();
+  if(!formHandler.validateForm()) return;
+  
   if (!idToEdit) {
-    requestHandler.createPost(postFormInput).then(response => {
+    requestHandler.createPost(postFormInput).then(() => {
       location.replace("./index.html");
     });
   } else {
-    requestHandler.editPost(postFormInput).then(response => {
+    requestHandler.editPost(postFormInput).then(() => {
       location.replace("./index.html");
     });
   }
