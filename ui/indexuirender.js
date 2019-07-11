@@ -8,6 +8,7 @@ export default class IndexUIRender {
 
   renderFeaturePosts(posts, deleteFunction) {
     posts.forEach(post => {
+      let divConfirmationId = `post-${post.id}`;
       let newCard = `
         <div class="card">
           <img class="card-img-top" src="${post.image}" alt="Card image cap">
@@ -26,13 +27,15 @@ export default class IndexUIRender {
       deleteIcon.classList.add("btn", "btn-danger");
       deleteIcon.innerText = "delete post";
       deleteIcon.addEventListener("click", e=>{
-        deleteFunction(e.target.dataset.id);
+        document.getElementById(divConfirmationId).classList.add("show");
       });
 
       newCard.querySelector(".card-body").appendChild(deleteIcon);
 
       const newDiv = document.createElement("div");
       newDiv.classList.add("col-sm-4");
+  
+      this.createDeleteConfirmation( newCard.querySelector(".card-body"), divConfirmationId,deleteFunction,post.id );
       newDiv.appendChild(newCard.documentElement);
       this.featurePostContainer.appendChild(newDiv);
     });
@@ -60,7 +63,6 @@ export default class IndexUIRender {
       deleteIcon.classList.add("btn", "btn-danger");
       deleteIcon.innerText = "delete post";
       deleteIcon.addEventListener("click", e=>{
-        let postId = e.target.dataset.id; 
         document.getElementById(divConfirmationId).classList.add("show");
       });
       
@@ -140,6 +142,4 @@ export default class IndexUIRender {
 
     postDiv.appendChild(newDiv);
   }
-
-
 }
