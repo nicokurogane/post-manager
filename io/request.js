@@ -19,6 +19,7 @@ export default class Request {
           return this.performRequest(`${this.BASE_URL}posts?_sort=id&_order=desc`);
       }*/
 
+      //......... REFACTOR THIS.............
     getPosts(lowerLimit, higestLimit) {
         return this.performRequest(`${this.BASE_URL}posts?_start=${lowerLimit}&_end=${higestLimit}`);
     }
@@ -29,6 +30,11 @@ export default class Request {
 
     getPostById(id){
         return this.performRequest(`${this.BASE_URL}posts/${id}`);
+    }
+
+    //......... REFACTOR THIS.............
+    getFilteredPost(filter){
+        return this.performRequest(`${this.BASE_URL}posts?_start=0&_end=8&title_like=${filter}`);
     }
 
     createPost(newPostData) {
