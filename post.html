@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/post.css">
     <title>POST</title>
 </head>
 
@@ -44,23 +45,20 @@
             </div>
             <div class="form-group">
                 <label for="author">Author</label>
-                <input type="text" class="form-control" id="author" placeholder="your name">
+               
+                <select id=author  class="form-control" >
+
+                </select>
             </div>
             <div class="form-group">
                 <label for="body">Body</label>
                 <textarea class="form-control" id="body" rows="3" placeholder="Write your post!"></textarea>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="createDate">Create Date</label>
-                    <input type="text" class="form-control" id="createDate">
-                </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col">
                     <label for="inputState">Tags</label>
-                    <select id="tags" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
+                    <div id="selected-tags" class="m-3"></div>
+                    <div id="tags-container"></div> 
                 </div>
 
             </div>

@@ -71,11 +71,15 @@ export default class Request {
     }
 
 
+    getAuthors(){
+        return this.performRequest(`${this.BASE_URL}authors`);
+    }
+    
     getAuthorById(authorId){
         return this.performRequest(`${this.BASE_URL}authors/${authorId}`);
     }
 
-
+    
     getCommentsByPostId(postId){
         return this.performRequest(`${this.BASE_URL}comments?postId=${postId}`);
     }
