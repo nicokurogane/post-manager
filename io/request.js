@@ -88,4 +88,13 @@ export default class Request {
         urlString = urlString.substring(0,urlString.length-1);
         return this.performRequest(`${this.BASE_URL}authors/${urlString}`);
     }
+
+    getUsersByIds(usersIds){
+        let urlString= "?";
+        usersIds.forEach(element => {
+            urlString += `id=${element}&`
+        });
+        urlString = urlString.substring(0,urlString.length-1);
+        return this.performRequest(`${this.BASE_URL}users/${urlString}`);
+    }
 }

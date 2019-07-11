@@ -43,14 +43,14 @@ if (idToReview) {
       commentContainer.appendChild(newDiv);      
     });
 
-    let authorsPlaceholders = Array.from(document.getElementsByClassName("author-comment"));
+    let usersPlaceholders = Array.from(document.getElementsByClassName("author-comment"));
     let authorsIds = [];
-    authorsPlaceholders.forEach(placeholder =>{
+    usersPlaceholders.forEach(placeholder =>{
       authorsIds.push(placeholder.dataset.id);
     });
 
-    requestHandler.getAuthorsByIds(authorsIds).then(authors =>{
-      updateAuthorsPlaceHolders(authorsPlaceholders, authors);
+    requestHandler.getUsersByIds(authorsIds).then(users =>{
+      updateUsersPlaceHolders(usersPlaceholders, users);
     });
   });
 }
@@ -68,7 +68,7 @@ function getIncludedTagsNames(tags, poolTag) {
   tagsElement.innerText = includedTags.toString();
 }
 
-function updateAuthorsPlaceHolders(placeholders, authors){
+function updateUsersPlaceHolders(placeholders, authors){
   authors.forEach(author => {
     placeholders.forEach(placeholder=>{
         if(placeholder.dataset.id == author.id){
