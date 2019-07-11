@@ -18,6 +18,7 @@ export default class FormUI {
   }
 
   initFields(requestHandler) {
+    this.idInput.value = 0;
     this.initAuthorField(requestHandler);
 
     requestHandler.getTags().then(tags => {
@@ -84,7 +85,7 @@ export default class FormUI {
     });
     let selectedAuthorId = this.authorInput.value;
     let newPost = new Post(
-      0,
+      this.idInput.value,
       this.titleInput.value,
       this.subtitleInput.value,
       this.imageInput.value,
