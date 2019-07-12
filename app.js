@@ -7,7 +7,7 @@ let uiRenderHandler = new IndexUIRender();
 let postList = new PostList();
 
 function deletePost(id) {
-  requestHandler.deletePostById(id).then(result => {
+  requestHandler.deletePostById(id).then(() => {
       window.location.reload();
     })
     .catch(err => console.log(err));

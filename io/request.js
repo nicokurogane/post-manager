@@ -10,14 +10,9 @@ export default class Request {
         return info;
     }
 
-    //devolverun array con los datos
     getLast3Posts() {
         return this.performRequest(`${this.BASE_URL}posts?_sort=id&_order=desc&_limit=3`);
     }
-
-    /*  getPosts(){
-          return this.performRequest(`${this.BASE_URL}posts?_sort=id&_order=desc`);
-      }*/
 
     getPosts(lowerLimit, higestLimit) {
         return this.performRequest(`${this.BASE_URL}posts?_start=${lowerLimit}&_end=${higestLimit}`);

@@ -2,6 +2,17 @@
     box-sizing: border-box;
 }
 
+
+#title{
+    font-weight: 500;
+    font-size: 3.5rem;
+}
+
+#subtitle{
+    font-weight: 500;
+    font-size: 2rem;
+}
+
 .post-image{
     width: 100%;
     object-fit: cover;

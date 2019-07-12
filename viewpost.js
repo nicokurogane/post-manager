@@ -8,6 +8,7 @@ let bodyElement = document.getElementById("body");
 let tagsElement = document.getElementById("tags");
 let imageElement = document.getElementById("post-image");
 let commentContainer = document.getElementById("comment-container");
+let likesElement = document.getElementById("likes");
 
 const requestHandler = new Request();
 
@@ -22,13 +23,14 @@ if (idToReview) {
     bodyElement.innerText = post.body;
     tagsElement.innerText = post.tags;
     imageElement.src = post.image;
+    likesElement.innerHTML = post.likes;
 
     requestHandler.getTags().then(tags => {
       getIncludedTagsNames(post.tags, tags);
     });
 
     requestHandler.getAuthorById(post.author).then(author => {
-      authorElement.innerText = author.name;
+      authorElement.innerText = `${author.name} ${author.lastName}`;
     });
   });
 

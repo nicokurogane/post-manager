@@ -34,7 +34,6 @@ export default class IndexUIRender {
 
       const newDiv = document.createElement("div");
       newDiv.classList.add("col-sm-4");
-  
       this.createDeleteConfirmation( newCard.querySelector(".card-body"), divConfirmationId,deleteFunction,post.id );
       newDiv.appendChild(newCard.documentElement);
       this.featurePostContainer.appendChild(newDiv);
@@ -125,7 +124,6 @@ export default class IndexUIRender {
     deleteButton.innerText = "delete post";
     deleteButton.addEventListener("click",e=>{
         deleteFunction(e.target.dataset.id);
-        window.location.reload();
     });
 
     let cancelButton= document.createElement("button");

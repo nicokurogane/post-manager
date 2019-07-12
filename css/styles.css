@@ -43,3 +43,7 @@
 .confirmation-message.show{
     display: block;
 }
+
+.feature-post-title{
+    margin-top: 7vh;
+}
