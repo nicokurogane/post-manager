@@ -27,8 +27,8 @@ export default class Request {
     }
 
     //......... REFACTOR THIS.............
-    getFilteredPost(filter){
-        return this.performRequest(`${this.BASE_URL}posts?_start=0&_end=8&title_like=${filter}`);
+    getFilteredPost(filter, endPostId){
+        return this.performRequest(`${this.BASE_URL}posts?_start=0&_end=${endPostId}&title_like=${filter}`);
     }
 
     createPost(newPostData) {

@@ -1,6 +1,8 @@
 export default class IndexUIRender {
   constructor() {
-    this.featurePostContainer = document.getElementById("feature-post-container");
+    this.featurePostContainer = document.getElementById(
+      "feature-post-container"
+    );
     this.postContainer = document.getElementById("post-container");
     this.tagsContainer = document.getElementById("tags-container");
     this.filterTagList = [];
@@ -15,18 +17,22 @@ export default class IndexUIRender {
           <div class="card-body">
             <h5 class="card-title">${post.title}</h5>
             <p class="card-text">${post.subTitle}</p>
-            <a class="btn btn-primary" href="./view_post.html?id=${post.id}">Check Post</a>
-            <a class="btn btn-success" href="./post.html?id=${post.id}">Edit Post</a>          
+            <a class="btn btn-primary" href="./view_post.html?id=${
+              post.id
+            }"><i class="far fa-eye"></i></a>
+            <a class="btn btn-success" href="./post.html?id=${
+              post.id
+            }"><i class="fas fa-edit"></i></a>          
           </div>
         </div>`;
 
       newCard = new DOMParser().parseFromString(newCard, "text/html");
 
-      const deleteIcon = document.createElement("a"); 
+      const deleteIcon = document.createElement("a");
       deleteIcon.dataset.id = post.id;
       deleteIcon.classList.add("btn", "btn-danger");
-      deleteIcon.innerText = "delete post";
-      deleteIcon.addEventListener("click", e=>{
+      deleteIcon.innerHTML = `<i class="far fa-trash-alt"></i>`;
+      deleteIcon.addEventListener("click", e => {
         document.getElementById(divConfirmationId).classList.add("show");
       });
 
@@ -34,7 +40,12 @@ export default class IndexUIRender {
 
       const newDiv = document.createElement("div");
       newDiv.classList.add("col-sm-4");
-      this.createDeleteConfirmation( newCard.querySelector(".card-body"), divConfirmationId,deleteFunction,post.id );
+      this.createDeleteConfirmation(
+        newCard.querySelector(".card-body"),
+        divConfirmationId,
+        deleteFunction,
+        post.id
+      );
       newDiv.appendChild(newCard.documentElement);
       this.featurePostContainer.appendChild(newDiv);
     });
@@ -48,26 +59,35 @@ export default class IndexUIRender {
           <div class="card-body">
             <h5 class="card-title">${post.title}</h5>
             <p class="card-text">${post.subTitle}</p>
-            <a class="btn btn-primary" href="./view_post.html?id=${post.id}">Check Post</a>
-            <a class="btn btn-success" href="./post.html?id=${post.id}">Edit Post</a>            
+            <a class="btn btn-primary" href="./view_post.html?id=${
+              post.id
+            }"><i class="far fa-eye"></i></a>
+            <a class="btn btn-success" href="./post.html?id=${
+              post.id
+            }"><i class="fas fa-edit"></i></a>            
           </div>
         </div>`;
       const newDiv = document.createElement("div");
       newDiv.classList.add("col-sm-12");
-     
-      newCard = new DOMParser().parseFromString(newCard, "text/html");   
 
-      const deleteIcon = document.createElement("a"); 
+      newCard = new DOMParser().parseFromString(newCard, "text/html");
+
+      const deleteIcon = document.createElement("a");
       deleteIcon.dataset.id = post.id;
       deleteIcon.classList.add("btn", "btn-danger");
-      deleteIcon.innerText = "delete post";
-      deleteIcon.addEventListener("click", e=>{
+      deleteIcon.innerHTML = `<i class="far fa-trash-alt"></i>`;
+      deleteIcon.addEventListener("click", e => {
         document.getElementById(divConfirmationId).classList.add("show");
       });
-      
+
       newCard.querySelector(".card-body").appendChild(deleteIcon);
 
-      this.createDeleteConfirmation( newCard.querySelector(".card-body"), divConfirmationId,deleteFunction,post.id );
+      this.createDeleteConfirmation(
+        newCard.querySelector(".card-body"),
+        divConfirmationId,
+        deleteFunction,
+        post.id
+      );
       newDiv.appendChild(newCard.documentElement);
       this.postContainer.appendChild(newDiv);
     });
@@ -110,29 +130,28 @@ export default class IndexUIRender {
   }
 
   /*creates a div inside the div containing the post info*/
-  createDeleteConfirmation(postDiv, divId, deleteFunction, postId){
+  createDeleteConfirmation(postDiv, divId, deleteFunction, postId) {
     const newDiv = document.createElement("div");
     newDiv.id = divId;
-    newDiv.classList.add("col-sm-12","confirmation-message");
+    newDiv.classList.add("col-sm-12", "confirmation-message");
 
     let message = `<div>Are you sure you want to delete this post?</div>`;
     message = new DOMParser().parseFromString(message, "text/html");
 
     let deleteButton = document.createElement("button");
     deleteButton.dataset.id = postId;
-    deleteButton.classList.add("btn","btn-danger");
+    deleteButton.classList.add("btn", "btn-danger");
     deleteButton.innerText = "delete post";
-    deleteButton.addEventListener("click",e=>{
-        deleteFunction(e.target.dataset.id);
+    deleteButton.addEventListener("click", e => {
+      deleteFunction(e.target.dataset.id);
     });
 
-    let cancelButton= document.createElement("button");
-    cancelButton.classList.add("btn","btn-secondary");
+    let cancelButton = document.createElement("button");
+    cancelButton.classList.add("btn", "btn-secondary","m-1");
     cancelButton.innerText = "cancel";
-    cancelButton.addEventListener("click", e=>{
+    cancelButton.addEventListener("click", e => {
       document.getElementById(divId).classList.remove("show");
     });
-
 
     newDiv.appendChild(message.documentElement);
     newDiv.appendChild(cancelButton);

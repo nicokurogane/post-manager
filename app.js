@@ -7,13 +7,16 @@ let uiRenderHandler = new IndexUIRender();
 let postList = new PostList();
 
 function deletePost(id) {
-  requestHandler.deletePostById(id).then(() => {
+  requestHandler
+    .deletePostById(id)
+    .then(() => {
       window.location.reload();
     })
     .catch(err => console.log(err));
 }
 
-requestHandler.getLast3Posts()
+requestHandler
+  .getLast3Posts()
   .then(array => {
     let lowestId = 0;
     array.forEach(element => {
@@ -28,6 +31,7 @@ requestHandler.getLast3Posts()
       array = array.reverse();
       postList.posts = array;
       uiRenderHandler.renderOtherPost(array, deletePost);
+      document.getElementById("title-filter").dataset.lastId = id;
     });
   });
 
@@ -37,16 +41,21 @@ requestHandler.getTags().then(tags => {
 });
 
 document.getElementById("btn-filter-by-tag").addEventListener("click", e => {
-  let filteredPost = postList.filterPostsByTags( uiRenderHandler.getFiltersTags() );
+  let filteredPost = postList.filterPostsByTags(
+    uiRenderHandler.getFiltersTags()
+  );
   uiRenderHandler.resetPostList();
   uiRenderHandler.renderOtherPost(filteredPost);
 });
 
-document.getElementById("post-title-search-form").addEventListener("submit", e => {
+document
+  .getElementById("post-title-search-form")
+  .addEventListener("submit", e => {
     e.preventDefault();
     let filter = document.getElementById("title-filter").value;
-    requestHandler.getFilteredPost(filter).then(arrayPost => {
+    let lastPostId = document.getElementById("title-filter").dataset.lastId;
+    requestHandler.getFilteredPost(filter,lastPostId).then(arrayPost => {
       uiRenderHandler.resetPostList();
       uiRenderHandler.renderOtherPost(arrayPost);
     });
-});
+  });

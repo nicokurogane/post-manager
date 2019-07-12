@@ -11,7 +11,6 @@ export default class FormUI {
     this.imageInput = document.getElementById("image");
     this.authorInput = document.getElementById("author");
     this.bodyInput = document.getElementById("body");
-    // this.tagsInput = document.getElementById("tags");//test only change later
     this.tagsContainer = document.getElementById("tags-container");
     this.selectedTagsContainer = document.getElementById("selected-tags");
     this.filterTagList = [];
