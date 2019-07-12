@@ -147,7 +147,7 @@ export default class IndexUIRender {
     });
 
     let cancelButton = document.createElement("button");
-    cancelButton.classList.add("btn", "btn-secondary","m-1");
+    cancelButton.classList.add("btn", "btn-secondary", "m-1");
     cancelButton.innerText = "cancel";
     cancelButton.addEventListener("click", e => {
       document.getElementById(divId).classList.remove("show");

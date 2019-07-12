@@ -42,16 +42,18 @@ if (idToReview) {
       const newDiv = document.createElement("div");
       newDiv.classList.add("comment");
       newDiv.innerHTML = newDivComment;
-      commentContainer.appendChild(newDiv);      
+      commentContainer.appendChild(newDiv);
     });
 
-    let usersPlaceholders = Array.from(document.getElementsByClassName("author-comment"));
+    let usersPlaceholders = Array.from(
+      document.getElementsByClassName("author-comment")
+    );
     let authorsIds = [];
-    usersPlaceholders.forEach(placeholder =>{
+    usersPlaceholders.forEach(placeholder => {
       authorsIds.push(placeholder.dataset.id);
     });
 
-    requestHandler.getUsersByIds(authorsIds).then(users =>{
+    requestHandler.getUsersByIds(authorsIds).then(users => {
       updateUsersPlaceHolders(usersPlaceholders, users);
     });
   });
@@ -70,12 +72,12 @@ function getIncludedTagsNames(tags, poolTag) {
   tagsElement.innerText = includedTags.toString();
 }
 
-function updateUsersPlaceHolders(placeholders, authors){
+function updateUsersPlaceHolders(placeholders, authors) {
   authors.forEach(author => {
-    placeholders.forEach(placeholder=>{
-        if(placeholder.dataset.id == author.id){
-          placeholder.innerText = author.name;
-        }
-    }); 
+    placeholders.forEach(placeholder => {
+      if (placeholder.dataset.id == author.id) {
+        placeholder.innerText = author.name;
+      }
+    });
   });
 }
