@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/post.css">
-    <title>POST</title>
+    <title>Applaudo Post Manager</title>
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Applaudo Post Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
             aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,12 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container p-5">
+        <div class="row p-t-3">
+            <div class="col m-b-6">
+                <h2 id="screen-title">Create/Edit Post</h2>
+            </div>
+        </div>
         <form id="post-form">
             <input type="hidden" id="postId" />
             <input type="hidden" id="tags" />
@@ -67,6 +72,7 @@
             </div>
             <button id="btnCreate" type="submit" class="btn btn-primary">Create Post</button>
             <button id="btnEdit" type="submit" class="btn btn-primary">Edit Post</button>
+            <a href="index.html" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 
